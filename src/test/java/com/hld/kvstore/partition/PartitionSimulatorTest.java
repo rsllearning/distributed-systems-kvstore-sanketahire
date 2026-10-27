@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * you can enable and adapt it once you've decided on a design, but it is
  * not required for the automated suite to pass.
  */
-@Disabled("Disabled until trainee completes the required TODO files")
 class PartitionSimulatorTest {
 
     private final PartitionSimulator simulator = new PartitionSimulator();
