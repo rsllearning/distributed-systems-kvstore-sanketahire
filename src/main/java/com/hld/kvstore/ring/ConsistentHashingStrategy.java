@@ -50,33 +50,33 @@ public class ConsistentHashingStrategy implements HashingStrategy {
 
     @Override
     public void addNode(String nodeId) {
-        // TODO:
-        // 1. Add nodeId to physicalNodes (if not already present).
-        // 2. For i in [0, VIRTUAL_NODES_PER_NODE):
-        //      compute hash of (nodeId + "#" + i)
-        //      put it in `ring` mapped to nodeId
-        throw new UnsupportedOperationException("TODO: implement addNode");
+        if (!physicalNodes.contains(nodeId)) {
+            physicalNodes.add(nodeId);
+        }
+        for (int i = 0; i < VIRTUAL_NODES_PER_NODE; i++) {
+            long ringPosition = hash(nodeId + "#" + i);
+            ring.put(ringPosition, nodeId);
+        }
     }
 
     @Override
     public void removeNode(String nodeId) {
-        // TODO:
-        // 1. Remove nodeId from physicalNodes.
-        // 2. Remove all VIRTUAL_NODES_PER_NODE ring entries for nodeId.
-        //    (Recompute the same hashes used in addNode, or track them
-        //    separately — your choice.)
-        throw new UnsupportedOperationException("TODO: implement removeNode");
+        physicalNodes.remove(nodeId);
+        for (int i = 0; i < VIRTUAL_NODES_PER_NODE; i++) {
+            long ringPosition = hash(nodeId + "#" + i);
+            ring.remove(ringPosition);
+        }
     }
 
     @Override
     public String getOwnerNode(String key) {
-        // TODO:
-        // 1. Guard: if ring is empty, throw IllegalStateException.
-        // 2. Compute hash of `key`.
-        // 3. Find the first ring entry with a position >= hash
-        //    (ring.tailMap(hash)) — if none, wrap around to ring.firstKey().
-        // 4. Return the node id at that position.
-        throw new UnsupportedOperationException("TODO: implement getOwnerNode");
+        if (ring.isEmpty()) {
+            throw new IllegalStateException("Ring is empty, no nodes registered");
+        }
+        long keyHash = hash(key);
+        SortedMap<Long, String> tailMap = ring.tailMap(keyHash);
+        long ringPosition = tailMap.isEmpty() ? ring.firstKey() : tailMap.firstKey();
+        return ring.get(ringPosition);
     }
 
     @Override
