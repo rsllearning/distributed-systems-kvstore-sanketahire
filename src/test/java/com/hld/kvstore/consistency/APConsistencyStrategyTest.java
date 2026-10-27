@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Just implement APConsistencyStrategy per the contract in its javadoc
  * until these pass.
  */
-@Disabled("Disabled until trainee completes the required TODO files")
 class APConsistencyStrategyTest {
 
     private final APConsistencyStrategy strategy = new APConsistencyStrategy();
