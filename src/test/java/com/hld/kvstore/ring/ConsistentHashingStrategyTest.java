@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * cost) rather than exact values, since your hash function choice will
  * shift the numbers slightly.
  */
-@Disabled("Disabled until trainee completes the required TODO files")
 class ConsistentHashingStrategyTest {
 
     @Test

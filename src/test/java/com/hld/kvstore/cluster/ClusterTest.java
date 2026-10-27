@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * replication, and consistency all pass their own tests, this confirms
  * they're wired together correctly in Cluster.
  */
-@Disabled("Disabled until trainee completes the required TODO files")
 class ClusterTest {
 
     private final ReplicationManager replicationManager = new ReplicationManager();

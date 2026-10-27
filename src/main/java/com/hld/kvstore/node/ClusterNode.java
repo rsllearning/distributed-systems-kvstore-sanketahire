@@ -41,20 +41,17 @@ public class ClusterNode extends AbstractNode {
 
     @Override
     protected void doPut(String key, String value) {
-        // TODO: delegate to `store`
-        throw new UnsupportedOperationException("TODO: implement doPut");
+        store.put(key, value);
     }
 
     @Override
     protected Optional<String> doGet(String key) {
-        // TODO: delegate to `store`
-        throw new UnsupportedOperationException("TODO: implement doGet");
+        return store.get(key);
     }
 
     @Override
     protected void doDelete(String key) {
-        // TODO: delegate to `store`
-        throw new UnsupportedOperationException("TODO: implement doDelete");
+        store.delete(key);
     }
 
     /**

@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * consistent hashing must move meaningfully fewer keys than naive hashing
  * when a node is added.
  */
-@Disabled("Disabled until trainee completes the required TODO files")
 class HashingStrategyComparisonTest {
 
     private double fractionMovedOnNodeAdd(HashingStrategy strategy) {

@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Provided test suite — you do not need to write or modify these tests.
  * Just implement ClusterNode's doPut/doGet/doDelete until these pass.
  */
-@Disabled("Disabled until trainee completes the required TODO files")
 class ClusterNodeTest {
 
     @Test
